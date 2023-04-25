@@ -36,8 +36,8 @@ Encontre os pares das imagens com o menor tempo e número de tentativas **que pu
 
   <img align="center" alt="ReactJS" height="30" width="40" title="React.Js" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
   <img align="center" alt="TypeScript" height="30" width="40" title="TypeScript" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg">
-    <img align="center" alt="HTML 5" height="30" width="40" title="HTML 5"  src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
-   <img align="center" alt="CSS 3" height="30" title="CSS 3" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
+    <!-- <img align="center" alt="HTML 5" height="30" width="40" title="HTML 5"  src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"> -->
+   <!-- <img align="center" alt="CSS 3" height="30" title="CSS 3" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"> -->
 </p>
 <br>
 
