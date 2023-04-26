@@ -12,5 +12,5 @@ export const Label = styled.div`
 export const Value = styled.div`
   font-size: 37px;
   font-weight: 600;
-  color: #5c7d8b;
+  color: #333;
 `;
