@@ -5,15 +5,18 @@ import { items } from "../../data/items";
 
 type Props = {
   item: GridItemType;
-  onClick: () => void;
+  propOnClick: () => void;
 };
 
-export const GridItem = ({ item, onClick }: Props) => {
+export const GridItem = ({ item, propOnClick }: Props) => {
   return (
     <C.Container
-    showBackground={item.permanentShown || item.shown}
-     onClick={onClick}>
-      {!item.permanentShown && !item.shown && <C.Icon src={b7Svg} alt="" opacity={.1}/>}
+      showBackground={item.permanentShown || item.shown}
+      onClick={propOnClick}
+    >
+      {!item.permanentShown && !item.shown && (
+        <C.Icon src={b7Svg} alt="" opacity={0.1} />
+      )}
       {(item.permanentShown || item.shown) && item.item !== null && (
         <C.Icon src={items[item.item].icon} alt="" />
       )}

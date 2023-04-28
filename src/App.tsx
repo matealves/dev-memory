@@ -10,6 +10,7 @@ import { GridItem } from "./components/GridItem";
 
 import { GridItemType } from "./types/GridItemType";
 import { items } from "./data/items";
+import { formatTimeElapsed } from "./helpers/formatTimeElapsed";
 
 function App() {
   const [playing, setPlaying] = useState<boolean>(false);
@@ -19,6 +20,13 @@ function App() {
   const [gridItems, setGridItems] = useState<GridItemType[]>([]);
 
   useEffect(() => resetAndCreateGrid(), []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (playing) setTimeElapsed(timeElapsed + 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [playing, timeElapsed]);
 
   const resetAndCreateGrid = () => {
     // step 1: resetar o jogo
@@ -55,8 +63,17 @@ function App() {
   };
 
   const handleItemClick = (index: number) => {
-    
-  }
+    if (playing && index !== null && shownCount < 2) {
+      const tempGrid = [...gridItems];
+
+      if (!tempGrid[index].permanentShown && !tempGrid[index].shown) {
+        tempGrid[index].shown = true;
+        setShownCount(shownCount + 1);
+      }
+
+      setGridItems(tempGrid);
+    }
+  };
 
   return (
     <C.Container>
@@ -66,7 +83,8 @@ function App() {
         </C.LogoLink>
 
         <C.InfoArea>
-          <InfoItem label="Tempo" value="00:00" />
+          {/* Exibindo: {shownCount} */}
+          <InfoItem label="Tempo" value={formatTimeElapsed(timeElapsed)} />
           <InfoItem label="Movimentos" value="0" />
         </C.InfoArea>
 
@@ -77,13 +95,15 @@ function App() {
         />
       </C.Info>
       <C.GridArea>
-        <C.Grid>{gridItems.map((item, index)=> (
-          <GridItem 
-          key={index}
-          item={item}
-          propOnClick={handleItemClick(index)}
-          />
-        ))}</C.Grid>
+        <C.Grid>
+          {gridItems.map((item, index) => (
+            <GridItem
+              key={index}
+              item={item}
+              propOnClick={() => handleItemClick(index)}
+            />
+          ))}
+        </C.Grid>
       </C.GridArea>
     </C.Container>
   );

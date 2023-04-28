@@ -4,11 +4,12 @@ export const Container = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
   font-family: Poppins, sans-serif;
-  width: 100%;
-  max-width: 750px;
+  width: 90%;
+  height: 60vh;
+  max-width: 1080px;
   margin: auto;
   display: flex;
-  padding: 50px 0;
+  padding: 75px 0;
 
   @media (max-width: 750px) {
     flex-direction: column;
@@ -18,7 +19,7 @@ export const Container = styled.div`
 export const Info = styled.div`
   display: flex;
   flex-direction: column;
-  width: auto;
+  width: 30%;
 
   @media (max-width: 750px) {
     margin-bottom: 50px;
@@ -44,7 +45,8 @@ export const InfoArea = styled.div`
 export const GridArea = styled.div`
   flex: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  padding: 10px;
 
   @media (max-width: 750px) {
     justify-content: center;
@@ -53,10 +55,11 @@ export const GridArea = styled.div`
 `;
 
 export const Grid = styled.div`
-  width: 430px;
+  width: 90%;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 1em;
 
   @media (max-width: 750px) {
   }
