@@ -13,14 +13,19 @@ export const Container = styled.div<ContainerProps>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  @media (max-width: 750px) {
+    width: 6rem;
+    height: 6rem;
+  }
 `;
 
 type IconProps = {
   opacity?: number;
 };
 export const Icon = styled.img<IconProps>`
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   user-select: none;
   opacity: ${(props) => props.opacity ?? 1};
 `;

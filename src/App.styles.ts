@@ -13,6 +13,9 @@ export const Container = styled.div`
 
   @media (max-width: 750px) {
     flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 35px 0;
   }
 `;
 
@@ -37,7 +40,8 @@ export const InfoArea = styled.div`
 
   @media (max-width: 750px) {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 40px;
     text-align: center;
   }
 `;
@@ -46,9 +50,9 @@ export const GridArea = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
-  padding: 10px;
 
   @media (max-width: 750px) {
+    align-items: center;
     justify-content: center;
     margin: 0 30px;
   }
@@ -62,5 +66,7 @@ export const Grid = styled.div`
   gap: 1em;
 
   @media (max-width: 750px) {
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
   }
 `;

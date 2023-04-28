@@ -28,6 +28,49 @@ function App() {
     return () => clearInterval(timer);
   }, [playing, timeElapsed]);
 
+  // veriricar se são abertos iguais
+  useEffect(() => {
+    if (shownCount === 2) {
+      const opened = gridItems.filter((item) => item.shown);
+      if (opened.length === 2) {
+        // v1 - se são iguais, torná-los permanentes
+        if (opened[0].item === opened[1].item) {
+          const tempGrid = [...gridItems];
+          for (let i in tempGrid) {
+            if (tempGrid[i].shown) {
+              tempGrid[i].permanentShown = true;
+              tempGrid[i].shown = false;
+            }
+          }
+          setGridItems(tempGrid);
+          setShownCount(0);
+        } else {
+          // v2 - se são diferentes, close all "shown"
+          setTimeout(() => {
+            const tempGrid = [...gridItems];
+            for (let i in tempGrid) {
+              tempGrid[i].shown = false;
+            }
+            setGridItems(tempGrid);
+            setShownCount(0);
+          }, 1000);
+        }
+
+        setMoveCount((moveCount) => moveCount + 1);
+      }
+    }
+  }, [shownCount, gridItems]);
+
+  // verify if game is over
+  useEffect(() => {
+    if (
+      moveCount > 0 &&
+      gridItems.every((item) => item.permanentShown === true)
+    ) {
+      setPlaying(false);
+    }
+  }, [moveCount, gridItems]);
+
   const resetAndCreateGrid = () => {
     // step 1: resetar o jogo
     setTimeElapsed(0);
@@ -85,7 +128,7 @@ function App() {
         <C.InfoArea>
           {/* Exibindo: {shownCount} */}
           <InfoItem label="Tempo" value={formatTimeElapsed(timeElapsed)} />
-          <InfoItem label="Movimentos" value="0" />
+          <InfoItem label="Movimentos" value={moveCount.toString()} />
         </C.InfoArea>
 
         <Button
