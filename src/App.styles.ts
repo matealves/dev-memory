@@ -22,7 +22,7 @@ export const Container = styled.div`
 export const Info = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 35%;
 
   @media (max-width: 750px) {
     margin-bottom: 50px;
